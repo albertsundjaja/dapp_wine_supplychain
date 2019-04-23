@@ -1,37 +1,118 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>MetaCoin | Truffle Webpack Demo w/ Frontend</title>
-  </head>
-  <style>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <title>Wine Supply Chain</title>
+</head>
+<style>
     input {
-      display: block;
-      margin-bottom: 12px;
+        display: block;
+        margin-bottom: 12px;
     }
-  </style>
-  <body>
-    <h1>MetaCoin — Example Truffle Dapp</h1>
-    <p>You have <strong class="balance">loading...</strong> META</p>
+</style>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1>Wine Supply Chain Dapp</h1>
+        </div>
+    </div>
 
-    <h1>Send MetaCoin</h1>
+    <div class="row">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-12">
+                    <h2>Owner Only</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <h3>Add Role</h3>
+                    <input type="text" placeholder="address" id="addRoleAddress"/>
+                    <select id="addRoleSelect">
+                        <option value="1">Farmer</option>
+                        <option value="2">Brewer</option>
+                        <option value="3">Distributor</option>
+                    </select>
+                    <br/>
+                    <br/>
+                    <button onclick="App.addRole()">Execute</button>
+                    <button onclick="App.checkRole()">Check</button>
+                    <span id="addRoleStatus"></span>
+                </div>
+            </div>
 
-    <label for="amount">Amount:</label>
-    <input type="text" id="amount" placeholder="e.g. 95" />
+        </div>
+    </div>
 
-    <label for="receiver">To address:</label>
-    <input
-      type="text"
-      id="receiver"
-      placeholder="e.g. 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"
-    />
+    <hr/>
 
-    <button onclick="App.sendCoin()">Send MetaCoin</button>
+    <div class="row">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-12">
+                    <h2>Farmer</h2>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-12">
+                    <h3>Harvest</h3>
+                    <input type="text" placeholder="batch Id" id="harvestId"/>
+                    <input type="text" placeholder="farm name" id="harvestFarmName"/>
+                    <button onclick="App.harvest()">Execute</button>
+                    <br/>
+                    <span id="harvestStatus"></span>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-12">
+                    <h3>Pack</h3>
+                    <input type="text" placeholder="batch Id" id="packId"/>
+                    <button onclick="App.pack()">Execute</button>
+                    <br/>
+                    <span id="packStatus"></span>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <p id="status"></p>
-    <p>
-      <strong>Hint:</strong> open the browser developer console to view any
-      errors and warnings.
-    </p>
-    <script src="index.js"></script>
-  </body>
+    <hr/>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-12">
+                    <h2>Brewer</h2>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-12">
+                    <h3>Buy From Farmer</h3>
+                    <input type="text" placeholder="batch Id" id="buyFromFarmerId"/>
+                    <input type="text" placeholder="brewer name" id="buyFromFarmerName"/>
+                    <button onclick="App.buyFromFarmer()">Execute</button>
+                    <br/>
+                    <span id="buyFromFarmerStatus"></span>
+                </div>
+            </div>
+            <br/>
+        </div>
+    </div>
+</div>
+
+<script src="index.js"></script>
+</body>
 </html>

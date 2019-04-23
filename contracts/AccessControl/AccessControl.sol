@@ -1,10 +1,11 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.5.2;
 
 import "../../app/node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol";
+import "../../app/node_modules/openzeppelin-solidity/contracts/ownership/Secondary.sol";
 import "../../app/node_modules/openzeppelin-solidity/contracts/lifecycle/Pausable.sol";
 
 
-contract AccessControl is Ownable {
+contract AccessControl is Pausable, Ownable, Secondary {
 
     // Default is to make sure that role starts at 1, since mapping default is 0
     enum RoleChoices {Default, Farmer, Brewer, Distributor, Consumer}
@@ -20,6 +21,9 @@ contract AccessControl is Ownable {
 
     modifier onlyFarmer() {
         require(isFarmer(msg.sender), "Farmer Only");
+        _;
+    }
+    modifier onlyOwner() {
         _;
     }
 

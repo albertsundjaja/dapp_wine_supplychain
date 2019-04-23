@@ -1,4 +1,4 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.5.2;
 
 import "../AccessControl/AccessControl.sol";
 
@@ -11,6 +11,7 @@ contract Base is AccessControl {
         BoughtByBrewer,
         Aged,
         Bottled,
+        IdAssigned,
         BoughtByDistributor,
         ForSale,
         Purchased
@@ -21,6 +22,7 @@ contract Base is AccessControl {
         string farmerName;
         address farmerAddress;
         string brewerName;
+        string productionId; // production ID by brewer
         address brewerAddress;
         address distributorAddress;
         State state;
@@ -30,38 +32,34 @@ contract Base is AccessControl {
     // store the grape batchId
     mapping(uint => grape) grapes;
 
-    // store last batchId
-    uint lastBatchId;
 
-    constructor() public {
-        lastBatchId = 0;
-    }
-
-    function checkGrape(uint _batchId) public view returns (address owner,address farmer,address brewer,address distributor,uint state) {
+    function checkGrape(uint _batchId) public view returns (address owner,string memory farmerName, address farmer, string memory brewerName, address brewer,address distributor,State state, uint price) {
         grape memory grapeBatch = grapes[_batchId];
         owner = grapeBatch.owner;
+        farmerName = grapeBatch.farmerName;
         farmer = grapeBatch.farmerAddress;
+        brewerName = grapeBatch.brewerName;
         brewer = grapeBatch.brewerAddress;
         distributor = grapeBatch.distributorAddress;
-        state = uint(grapeBatch.state);
+        state = grapeBatch.state;
+        price = grapeBatch.price;
         //return (grapeBatch.owner, grapeBatch.farmerAddress, grapeBatch.brewerAddress, grapeBatch.distributorAddress, uint(grapeBatch.state));
     }
 
-    function harvest(string memory _farmerName) public onlyFarmer {
-        uint batchId = lastBatchId;
-        // increment the last batchId for future use
-        lastBatchId += 1;
+    function harvest(uint _batchId, string memory _farmerName) public onlyFarmer {
+        // ensure batch id is unique
+        require(grapes[_batchId].owner == address(0), "batch Id already exist");
 
         grape memory currentGrape;
         currentGrape.owner = msg.sender;
         currentGrape.farmerName = _farmerName;
         currentGrape.farmerAddress = msg.sender;
         currentGrape.state = State.Harvested;
-        grapes[batchId] = currentGrape;
+        grapes[_batchId] = currentGrape;
     }
 
     function pack(uint _batchId) public onlyFarmer {
-        grape memory currentGrape = grapes[_batchId];
+        grape storage currentGrape = grapes[_batchId];
 
         require(currentGrape.state == State.Harvested, "Grape has not been harvested");
         // make sure the original farmer is the one who can modify
@@ -71,7 +69,7 @@ contract Base is AccessControl {
     }
 
     function buyFromFarmer(uint _batchId, string memory _brewerName) public onlyBrewer {
-        grape memory currentGrape = grapes[_batchId];
+        grape storage currentGrape = grapes[_batchId];
         require(currentGrape.state == State.Packed, "Grape has not been packed");
 
         currentGrape.owner = msg.sender;
@@ -81,7 +79,7 @@ contract Base is AccessControl {
     }
 
     function ferment(uint _batchId) public onlyBrewer {
-        grape memory currentGrape = grapes[_batchId];
+        grape storage currentGrape = grapes[_batchId];
 
         require(currentGrape.state == State.BoughtByBrewer, "Grape has not been bought");
         // make sure the original brewer is the one who can modify
@@ -91,7 +89,7 @@ contract Base is AccessControl {
     }
 
     function bottle(uint _batchId) public onlyBrewer {
-        grape memory currentGrape = grapes[_batchId];
+        grape storage currentGrape = grapes[_batchId];
 
         require(currentGrape.state == State.Aged, "Grape has not been aged");
         // make sure the original brewer is the one who can modify
@@ -100,10 +98,21 @@ contract Base is AccessControl {
         currentGrape.state = State.Bottled;
     }
 
-    function buyWine(uint _batchId) public onlyDistributor {
-        grape memory currentGrape = grapes[_batchId];
+    function assignProductionId(uint _batchId, string memory _productionId) public onlyBrewer {
+        grape storage currentGrape = grapes[_batchId];
 
         require(currentGrape.state == State.Bottled, "Grape has not been bottled");
+        // make sure the original brewer is the one who can modify
+        require(currentGrape.owner == msg.sender, "This grape does not belong to you");
+
+        currentGrape.productionId = _productionId;
+        currentGrape.state = State.IdAssigned;
+    }
+
+    function buyWine(uint _batchId) public onlyDistributor {
+        grape storage currentGrape = grapes[_batchId];
+
+        require(currentGrape.state == State.IdAssigned, "Grape has not been assigned an ID");
 
         currentGrape.owner = msg.sender;
         currentGrape.distributorAddress = msg.sender;
@@ -111,9 +120,9 @@ contract Base is AccessControl {
     }
 
     function shipToShop(uint _batchId, uint _price) public onlyDistributor {
-        grape memory currentGrape = grapes[_batchId];
+        grape storage currentGrape = grapes[_batchId];
 
-        require(currentGrape.state == State.Bottled, "Grape has not been bottled");
+        require(currentGrape.state == State.BoughtByDistributor, "Grape has not been bought");
         require(currentGrape.owner == msg.sender, "This grape does not belong to you");
 
         currentGrape.state = State.ForSale;
@@ -121,13 +130,13 @@ contract Base is AccessControl {
     }
 
     function buyFromShop(uint _batchId) public payable {
-        grape memory currentGrape = grapes[_batchId];
+        grape storage currentGrape = grapes[_batchId];
 
         require(currentGrape.state == State.ForSale, "Grape is not for sale");
         require(msg.value >= currentGrape.price, "Insufficient amount");
 
         currentGrape.owner = msg.sender;
-        currentGrape.state = State.ForSale;
+        currentGrape.state = State.Purchased;
 
         uint _price = currentGrape.price;
         uint amountToReturn = msg.value - _price;
