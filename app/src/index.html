@@ -109,6 +109,37 @@
                 </div>
             </div>
             <br/>
+            <div class="row">
+                <div class="col-12">
+                    <h3>Ferment</h3>
+                    <input type="text" placeholder="batch Id" id="fermentId"/>
+                    <button onclick="App.ferment()">Execute</button>
+                    <br/>
+                    <span id="fermentStatus"></span>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-12">
+                    <h3>Bottle</h3>
+                    <input type="text" placeholder="batch Id" id="bottleId"/>
+                    <button onclick="App.bottle()">Execute</button>
+                    <br/>
+                    <span id="bottleStatus"></span>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-12">
+                    <h3>Assign Production Id</h3>
+                    <input type="text" placeholder="batch Id" id="assignId"/>
+                    <input type="text" placeholder="production Id" id="assignProductionId"/>
+                    <button onclick="App.assignId()">Execute</button>
+                    <br/>
+                    <span id="assignStatus"></span>
+                </div>
+            </div>
+            <br/>
         </div>
     </div>
 </div>

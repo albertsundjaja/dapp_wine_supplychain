@@ -48,7 +48,7 @@ const App = {
         // if there is error, display it
         if (error != null) {
             console.log(error);
-            document.getElementById("addRoleStatus").innerHTML = "Unable to process transaction - are you allowed to access this endpoint?";
+            document.getElementById("addRoleStatus").innerHTML = "Unable to process transaction - check console message";
             return;
         }
         document.getElementById("addRoleStatus").innerHTML = "Role added";
@@ -63,7 +63,7 @@ const App = {
         // if there is error, display it
         if (error != null) {
             console.log(error);
-            document.getElementById("addRoleStatus").innerHTML = "Unable to process transaction - are you allowed to access this endpoint?";
+            document.getElementById("addRoleStatus").innerHTML = "Unable to process transaction - check console message";
             return;
         }
         console.log(checkFarmer);
@@ -79,7 +79,7 @@ const App = {
         // if there is error, display it
         if (error != null) {
             console.log(error);
-            document.getElementById("harvestStatus").innerHTML = "Unable to process transaction - are you allowed to access this endpoint?";
+            document.getElementById("harvestStatus").innerHTML = "Unable to process transaction - check console message";
             return;
         }
         document.getElementById("harvestStatus").innerHTML = "Grape %i harvested".replace("%i", batchId);
@@ -93,7 +93,7 @@ const App = {
         // if there is error, display it
         if (error != null) {
             console.log(error);
-            document.getElementById("packStatus").innerHTML = "Unable to process transaction - are you allowed to access this endpoint?";
+            document.getElementById("packStatus").innerHTML = "Unable to process transaction - check console message";
             return;
         }
         document.getElementById("packStatus").innerHTML = "Grape %i packed".replace("%i", batchId);
@@ -108,12 +108,54 @@ const App = {
         // if there is error, display it
         if (error != null) {
             console.log(error);
-            document.getElementById("buyFromFarmerStatus").innerHTML = "Unable to process transaction - are you allowed to access this endpoint?";
+            document.getElementById("buyFromFarmerStatus").innerHTML = "Unable to process transaction - check console message";
             return;
         }
         document.getElementById("buyFromFarmerStatus").innerHTML = "Grape %i bought".replace("%i", batchId);
     },
 
+    ferment: async function () {
+        const {ferment} = this.meta.methods;
+        const batchId = document.getElementById("fermentId").value;
+        let error = null;
+        await ferment(batchId).send({from: this.account}).catch((err) => error = err);
+        // if there is error, display it
+        if (error != null) {
+            console.log(error);
+            document.getElementById("fermentStatus").innerHTML = "Unable to process transaction - check console message";
+            return;
+        }
+        document.getElementById("fermentStatus").innerHTML = "Grape %i fermented".replace("%i", batchId);
+    },
+
+    bottle: async function () {
+        const {bottle} = this.meta.methods;
+        const batchId = document.getElementById("bottleId").value;
+        let error = null;
+        await bottle(batchId).send({from: this.account}).catch((err) => error = err);
+        // if there is error, display it
+        if (error != null) {
+            console.log(error);
+            document.getElementById("bottleStatus").innerHTML = "Unable to process transaction - check console message";
+            return;
+        }
+        document.getElementById("bottleStatus").innerHTML = "Grape %i bottled".replace("%i", batchId);
+    },
+
+    assignId: async function () {
+        const {assignProductionId} = this.meta.methods;
+        const batchId = document.getElementById("assignId").value;
+        const productionId = document.getElementById("assignProductionId").value;
+        let error = null;
+        await assignProductionId(batchId, productionId).send({from: this.account}).catch((err) => error = err);
+        // if there is error, display it
+        if (error != null) {
+            console.log(error);
+            document.getElementById("assignStatus").innerHTML = "Unable to process transaction - check console message";
+            return;
+        }
+        document.getElementById("assignStatus").innerHTML = "Grape %i assigned with product id".replace("%i", batchId);
+    }
 
 };
 
