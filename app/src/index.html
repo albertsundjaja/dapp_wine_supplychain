@@ -131,6 +131,16 @@
             <br/>
             <div class="row">
                 <div class="col-12">
+                    <h3>Check Grape</h3>
+                    <input type="text" placeholder="batch Id" id="changeId"/>
+                    <button onclick="App.changeState()">Execute</button>
+                    <br/>
+                    <span id="changeStatus"></span>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-12">
                     <h3>Assign Production Id</h3>
                     <input type="text" placeholder="batch Id" id="assignId"/>
                     <input type="text" placeholder="production Id" id="assignProductionId"/>
@@ -142,6 +152,73 @@
             <br/>
         </div>
     </div>
+
+    <hr/>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-12">
+                    <h2>Distributor</h2>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-12">
+                    <h3>Buy From Brewer</h3>
+                    <input type="text" placeholder="batch Id" id="buyWineId"/>
+                    <button onclick="App.buyWine()">Execute</button>
+                    <br/>
+                    <span id="buyWineStatus"></span>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-12">
+                    <h3>Ship To Shop</h3>
+                    <input type="text" placeholder="batch Id" id="shipToShopId"/>
+                    <input type="text" placeholder="price" id="shipToShopPrice"/>
+                    <button onclick="App.shipToShop()">Execute</button>
+                    <br/>
+                    <span id="shipToShopStatus"></span>
+                </div>
+            </div>
+            <br/>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Consumer</h1>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-12">
+                    <h3>Check Grape</h3>
+                    <input type="text" placeholder="batch Id" id="checkGrapeId"/>
+                    <button onclick="App.checkGrape()">Execute</button>
+                    <br/>
+                    <span id="checkGrapeStatus"></span>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-12">
+                    <h3>Buy From Shop</h3>
+                    <input type="text" placeholder="batch Id" id="buyFromShopId"/>
+                    <button onclick="App.buyFromShop()">Execute</button>
+                    <br/>
+                    <span id="buyFromShopStatus"></span>
+                </div>
+            </div>
+            <br/>
+        </div>
+    </div>
+
 </div>
 
 <script src="index.js"></script>

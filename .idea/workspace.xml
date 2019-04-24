@@ -4,6 +4,8 @@
     <list default="true" id="151cdb82-adad-4613-8d05-a75dd77ec29c" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/app/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/Base/Base.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Base/Base.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/TestBase.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/TestBase.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -22,8 +24,8 @@
           <file leaf-file-name="TestBase.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/test/TestBase.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="304">
-                  <caret line="103" selection-start-line="103" selection-end-line="103" />
+                <state relative-caret-position="447">
+                  <caret line="157" column="31" selection-start-line="157" selection-start-column="31" selection-end-line="157" selection-end-column="31" />
                 </state>
               </provider>
             </entry>
@@ -32,7 +34,7 @@
             <entry file="file://$PROJECT_DIR$/truffle-config.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="441">
-                  <caret line="59" column="18" lean-forward="true" selection-start-line="59" selection-start-column="18" selection-end-line="59" selection-end-column="18" />
+                  <caret line="59" column="18" selection-start-line="59" selection-start-column="18" selection-end-line="59" selection-end-column="18" />
                 </state>
               </provider>
             </entry>
@@ -49,8 +51,8 @@
           <file leaf-file-name="Base.sol" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/contracts/Base/Base.sol">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="943">
-                  <caret line="115" selection-start-line="115" selection-end-line="115" />
+                <state relative-caret-position="120">
+                  <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="16" selection-end-column="17" />
                 </state>
               </provider>
             </entry>
@@ -67,8 +69,8 @@
           <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/src/index.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="274">
-                  <caret line="149" column="30" selection-start-line="149" selection-start-column="30" selection-end-line="149" selection-end-column="30" />
+                <state relative-caret-position="-264">
+                  <caret line="34" column="25" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="25" />
                   <folding>
                     <element signature="e#0#24#0" expanded="true" />
                   </folding>
@@ -76,11 +78,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Base.json" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/build/contracts/Base.json">
+          <file leaf-file-name="Migrations.sol" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/contracts/Migrations.sol">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1495">
-                  <caret line="14205" column="44" selection-start-line="14205" selection-start-column="44" selection-end-line="14205" selection-end-column="44" />
+                <state relative-caret-position="345">
+                  <caret line="23" selection-start-line="23" selection-end-line="23" />
                 </state>
               </provider>
             </entry>
@@ -88,8 +90,8 @@
           <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/src/index.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="308">
-                  <caret line="137" column="25" lean-forward="true" selection-start-line="137" selection-start-column="25" selection-end-line="137" selection-end-column="25" />
+                <state relative-caret-position="249">
+                  <caret line="133" column="40" selection-start-line="133" selection-start-column="40" selection-end-line="133" selection-end-column="40" />
                 </state>
               </provider>
             </entry>
@@ -103,15 +105,6 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="PauserRole.sol" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/node_modules/openzeppelin-solidity/contracts/access/roles/PauserRole.sol">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="200">
-                  <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-                </state>
-              </provider>
-            </entry>
-          </file>
         </leaf>
       </split-first>
       <split-second>
@@ -119,8 +112,8 @@
           <file leaf-file-name="Base.sol" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/contracts/Base/Base.sol">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="354">
-                  <caret line="115" selection-start-line="115" selection-end-line="115" />
+                <state relative-caret-position="307">
+                  <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
                 </state>
               </provider>
             </entry>
@@ -143,7 +136,12 @@
       <find>_price</find>
       <find>address</find>
       <find>networks</find>
+      <find>abi</find>
+      <find>buyFromShop</find>
     </findStrings>
+    <replaceStrings>
+      <replace>check console message</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -155,11 +153,11 @@
         <option value="$PROJECT_DIR$/contracts/Base/base.sol" />
         <option value="$PROJECT_DIR$/contracts/Core/Core.sol" />
         <option value="$PROJECT_DIR$/migrations/2_deploy_contracts.js" />
-        <option value="$PROJECT_DIR$/test/TestBase.js" />
-        <option value="$PROJECT_DIR$/contracts/Base/Base.sol" />
         <option value="$PROJECT_DIR$/contracts/AccessControl/AccessControl.sol" />
         <option value="$PROJECT_DIR$/truffle-config.js" />
         <option value="$PROJECT_DIR$/app/src/index.html" />
+        <option value="$PROJECT_DIR$/test/TestBase.js" />
+        <option value="$PROJECT_DIR$/contracts/Base/Base.sol" />
         <option value="$PROJECT_DIR$/app/src/index.js" />
       </list>
     </option>
@@ -1034,17 +1032,6 @@
             <path>
               <item name="proj6" type="b2602c69:ProjectViewProjectNode" />
               <item name="proj6" type="462c0819:PsiDirectoryNode" />
-              <item name="build" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="proj6" type="b2602c69:ProjectViewProjectNode" />
-              <item name="proj6" type="462c0819:PsiDirectoryNode" />
-              <item name="build" type="462c0819:PsiDirectoryNode" />
-              <item name="contracts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="proj6" type="b2602c69:ProjectViewProjectNode" />
-              <item name="proj6" type="462c0819:PsiDirectoryNode" />
               <item name="contracts" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -1100,12 +1087,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1555738848772</updated>
-      <workItem from="1555738850387" duration="18672000" />
+      <workItem from="1555738850387" duration="23334000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18672000" />
+    <option name="totallyTimeSpent" value="23334000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="717" extended-state="6" />
@@ -1176,13 +1163,6 @@
     <entry file="file://$PROJECT_DIR$/build/contracts/Pausable.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/contracts/Migrations.sol">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -1225,24 +1205,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build/contracts/Base.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1495">
-          <caret line="14205" column="44" selection-start-line="14205" selection-start-column="44" selection-end-line="14205" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/truffle-config.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="441">
-          <caret line="59" column="18" lean-forward="true" selection-start-line="59" selection-start-column="18" selection-end-line="59" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/TestBase.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="103" selection-start-line="103" selection-end-line="103" />
+          <caret line="59" column="18" selection-start-line="59" selection-start-column="18" selection-end-line="59" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -1253,24 +1219,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/contracts/Base/Base.sol">
+    <entry file="file://$PROJECT_DIR$/build/contracts/Base.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="943">
-          <caret line="115" selection-start-line="115" selection-end-line="115" />
+        <state relative-caret-position="1116">
+          <caret line="624" column="24" lean-forward="true" selection-start-line="624" selection-start-column="24" selection-end-line="624" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/contracts/Migrations.sol">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="137" column="25" lean-forward="true" selection-start-line="137" selection-start-column="25" selection-end-line="137" selection-end-column="25" />
+        <state relative-caret-position="249">
+          <caret line="133" column="40" selection-start-line="133" selection-start-column="40" selection-end-line="133" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/TestBase.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="157" column="31" selection-start-line="157" selection-start-column="31" selection-end-line="157" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/contracts/Base/Base.sol">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="16" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="149" column="30" selection-start-line="149" selection-start-column="30" selection-end-line="149" selection-end-column="30" />
+        <state relative-caret-position="-264">
+          <caret line="34" column="25" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="25" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
           </folding>

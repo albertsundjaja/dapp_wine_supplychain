@@ -33,11 +33,12 @@ contract Base is AccessControl {
     mapping(uint => grape) grapes;
 
 
-    function checkGrape(uint _batchId) public view returns (address owner,string memory farmerName, address farmer, string memory brewerName, address brewer,address distributor,State state, uint price) {
+    function checkGrape(uint _batchId) public view returns (address owner,string memory farmerName, address farmer, string memory productionId, string memory brewerName, address brewer,address distributor,State state, uint price) {
         grape memory grapeBatch = grapes[_batchId];
         owner = grapeBatch.owner;
         farmerName = grapeBatch.farmerName;
         farmer = grapeBatch.farmerAddress;
+        productionId = grapeBatch.productionId;
         brewerName = grapeBatch.brewerName;
         brewer = grapeBatch.brewerAddress;
         distributor = grapeBatch.distributorAddress;

@@ -33,7 +33,6 @@ const App = {
         const address = document.getElementById("addRoleAddress").value;
         const role = document.getElementById("addRoleSelect").value;
         let error = null;
-        console.log(role);
         switch (role) {
             case "1":
                 await addFarmer(address).send({from: this.account}).catch((err) => error = err);
@@ -146,6 +145,7 @@ const App = {
         const {assignProductionId} = this.meta.methods;
         const batchId = document.getElementById("assignId").value;
         const productionId = document.getElementById("assignProductionId").value;
+        console.log(productionId);
         let error = null;
         await assignProductionId(batchId, productionId).send({from: this.account}).catch((err) => error = err);
         // if there is error, display it
@@ -155,8 +155,101 @@ const App = {
             return;
         }
         document.getElementById("assignStatus").innerHTML = "Grape %i assigned with product id".replace("%i", batchId);
-    }
+    },
 
+    buyWine: async function () {
+        const { buyWine } = this.meta.methods;
+        const batchId = document.getElementById("buyWineId").value;
+        let error = null;
+        await buyWine(batchId).send({from: this.account}).catch((err) => error = err);
+        // if there is error, display it
+        if (error != null) {
+            console.log(error);
+            document.getElementById("buyWineStatus").innerHTML = "Unable to process transaction - check console message";
+            return;
+        }
+        document.getElementById("buyWineStatus").innerHTML = "Grape %i (Wine) has been bought".replace("%i", batchId);
+    },
+
+    shipToShop: async function () {
+        const { shipToShop } = this.meta.methods;
+        const batchId = document.getElementById("shipToShopId").value;
+        const price = document.getElementById("shipToShopPrice").value;
+        let error = null;
+        await shipToShop(batchId, price).send({from: this.account}).catch((err) => error = err);
+        // if there is error, display it
+        if (error != null) {
+            console.log(error);
+            document.getElementById("shipToShopStatus").innerHTML = "Unable to process transaction - check console message";
+            return;
+        }
+        document.getElementById("shipToShopStatus").innerHTML = "Grape %i (Wine) has been shipped to shop".replace("%i", batchId);
+    },
+
+    getPrice: async function (batchId) {
+        const { checkGrape } = this.meta.methods;
+        const grape = await checkGrape(batchId).call({from:this.account});
+        const price = grape['price'];
+        return price;
+    },
+
+    checkGrape: async function () {
+        const { checkGrape } = this.meta.methods;
+        const batchId = document.getElementById("checkGrapeId").value;
+        let error = null;
+        const grape = await checkGrape(batchId).call({from: this.account}).catch((err) => error = err);
+        // if there is error, display it
+        if (error != null) {
+            console.log(error);
+            document.getElementById("checkGrapeStatus").innerHTML = "Unable to process transaction - check console message";
+            return;
+        }
+        console.log(grape['state']==="8");
+        let state = "";
+        switch (grape['state']) {
+            case "0":
+                state = "Harvested";
+            case "1":
+                state = "Packed";
+            case "2":
+                state = "Bought By Brewer";
+            case "3":
+                state = "Aged";
+            case "4":
+                state = "Bottled";
+            case "5":
+                state = "Assigned ID by Brewer";
+            case "6":
+                state = "Bought by distributor";
+            case "7":
+                state = "For Sale";
+            case "8":
+                state = "Purchased by end consumer";
+        }
+        let grapeStatus =
+            "Owner:" + grape['owner'] + "<br/>" +
+                "Farmer name:" + grape['farmerName'] + "<br/>" +
+                "Brewer name:" + grape['brewerName'] + "<br/>" +
+                "Wine ID:" + grape['productionId'] + "<br/>" +
+                "Distributor price:" + grape['price'] + "<br/>" +
+                "State:" + state;
+        document.getElementById("checkGrapeStatus").innerHTML = grapeStatus;
+    },
+
+    buyFromShop: async function () {
+        const { buyFromShop } = this.meta.methods;
+        const batchId = document.getElementById("buyFromShopId").value;
+        const price = await this.getPrice(batchId);
+        let error = null;
+        await buyFromShop(batchId).send({value:price, from: this.account}).catch((err) => error = err);
+        // if there is error, display it
+        if (error != null) {
+            console.log(error);
+            document.getElementById("buyFromShopStatus").innerHTML = "Unable to process transaction - check console message";
+            return;
+        }
+        document.getElementById("buyFromShopStatus").innerHTML = "Grape %i (Wine) has been bought".replace("%i", batchId);
+    }
 };
 
 window.App = App;
