@@ -28,6 +28,23 @@ const App = {
         }
     },
 
+    // this is for testing purpose as onlyOwner can add role
+    // this function allow everyone to add role
+    addRoleDebug: async function () {
+        const {addRole} = this.meta.methods;
+        const address = document.getElementById("addRoleAddress").value;
+        const role = document.getElementById("addRoleSelect").value;
+        let error = null;
+        await addRole(address, role).send({from:this.account}).catch((err) => error = err);
+        // if there is error, display it
+        if (error != null) {
+            console.log(error);
+            document.getElementById("addRoleStatus").innerHTML = "Unable to process transaction - check console message";
+            return;
+        }
+        document.getElementById("addRoleStatus").innerHTML = "Role added (debug)";
+    },
+
     addRole: async function () {
         const {addFarmer, addBrewer, addDistributor} = this.meta.methods;
         const address = document.getElementById("addRoleAddress").value;
@@ -52,6 +69,7 @@ const App = {
         }
         document.getElementById("addRoleStatus").innerHTML = "Role added";
     },
+
 
     checkRole: async function () {
         const {isFarmer, isBrewer} = this.meta.methods;
@@ -204,27 +222,41 @@ const App = {
             document.getElementById("checkGrapeStatus").innerHTML = "Unable to process transaction - check console message";
             return;
         }
-        console.log(grape['state']==="8");
+        console.log(grape);
+        // if it is empty then this grape doesnt exist
+        if(grape['farmerName'] === "") {
+            document.getElementById("checkGrapeStatus").innerHTML = "Grape doesn't exist";
+            return;
+        }
         let state = "";
         switch (grape['state']) {
             case "0":
                 state = "Harvested";
+                break;
             case "1":
                 state = "Packed";
+                break;
             case "2":
                 state = "Bought By Brewer";
+                break;
             case "3":
                 state = "Aged";
+                break;
             case "4":
                 state = "Bottled";
+                break;
             case "5":
                 state = "Assigned ID by Brewer";
+                break;
             case "6":
                 state = "Bought by distributor";
+                break;
             case "7":
                 state = "For Sale";
+                break;
             case "8":
                 state = "Purchased by end consumer";
+                break;
         }
         let grapeStatus =
             "Owner:" + grape['owner'] + "<br/>" +

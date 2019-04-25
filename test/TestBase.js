@@ -150,10 +150,3 @@ it('can be bought only when paid enough', async() => {
     // if the promise is returning error, that means it works fine
     assert.notEqual(error, null);
 });
-
-
-it('can change state', async() => {
-    let instance = await Base.deployed();
-    await instance.harvest(9, 'Awesome Farm', {from: accounts[1]});
-    await instance.changeState()
-}

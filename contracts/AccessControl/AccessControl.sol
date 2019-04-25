@@ -8,7 +8,8 @@ import "../../app/node_modules/openzeppelin-solidity/contracts/lifecycle/Pausabl
 contract AccessControl is Pausable, Ownable, Secondary {
 
     // Default is to make sure that role starts at 1, since mapping default is 0
-    enum RoleChoices {Default, Farmer, Brewer, Distributor, Consumer}
+    // this will make all address to be 0 by default
+    enum RoleChoices {Default, Farmer, Brewer, Distributor}
     mapping(address => RoleChoices) members;
 
     function addFarmer(address _address) public onlyOwner {
@@ -51,6 +52,21 @@ contract AccessControl is Pausable, Ownable, Secondary {
     modifier onlyDistributor() {
         require(isDistributor(msg.sender), "Distributor Only");
         _;
+    }
+
+    // this is a function for demo purpose, as all roles addition onlyOwner
+    function addRole(address _address, uint _roleChoice) public {
+        RoleChoices role = RoleChoices(_roleChoice);
+
+        if (role == RoleChoices.Farmer) {
+            members[_address] = RoleChoices.Farmer;
+        }
+        else if (role == RoleChoices.Brewer) {
+            members[_address] = RoleChoices.Brewer;
+        }
+        else if (role == RoleChoices.Distributor) {
+            members[_address] = RoleChoices.Distributor;
+        }
     }
 
 }

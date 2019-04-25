@@ -30,6 +30,19 @@
 
     <div class="row">
         <div class="col-12">
+            <h2>Check Grape</h2>
+            <input type="text" placeholder="batch Id" id="checkGrapeId"/>
+            <button onclick="App.checkGrape()">Execute</button>
+            <br/>
+            <span id="checkGrapeStatus"></span>
+        </div>
+    </div>
+    <br/>
+
+    <hr/>
+
+    <div class="row">
+        <div class="col-12">
             <div class="row">
                 <div class="col-12">
                     <h2>Owner Only</h2>
@@ -47,8 +60,9 @@
                     <br/>
                     <br/>
                     <button onclick="App.addRole()">Execute</button>
-                    <button onclick="App.checkRole()">Check</button>
-                    <span id="addRoleStatus"></span>
+                    <span id="addRoleStatus"></span><br/>
+                    <label>For testing purpose anyone can add role using below button instead</label><br/>
+                    <button onclick="App.addRoleDebug()">Execute</button>
                 </div>
             </div>
 
@@ -131,16 +145,6 @@
             <br/>
             <div class="row">
                 <div class="col-12">
-                    <h3>Check Grape</h3>
-                    <input type="text" placeholder="batch Id" id="changeId"/>
-                    <button onclick="App.changeState()">Execute</button>
-                    <br/>
-                    <span id="changeStatus"></span>
-                </div>
-            </div>
-            <br/>
-            <div class="row">
-                <div class="col-12">
                     <h3>Assign Production Id</h3>
                     <input type="text" placeholder="batch Id" id="assignId"/>
                     <input type="text" placeholder="production Id" id="assignProductionId"/>
@@ -193,16 +197,6 @@
             <div class="row">
                 <div class="col-12">
                     <h1>Consumer</h1>
-                </div>
-            </div>
-            <br/>
-            <div class="row">
-                <div class="col-12">
-                    <h3>Check Grape</h3>
-                    <input type="text" placeholder="batch Id" id="checkGrapeId"/>
-                    <button onclick="App.checkGrape()">Execute</button>
-                    <br/>
-                    <span id="checkGrapeStatus"></span>
                 </div>
             </div>
             <br/>
