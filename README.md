@@ -54,6 +54,9 @@ Node v8.10.0
 Web3.js v1.0.0-beta.37
 openzeppelin-solidity ^2.2.0
 ```
+
+OpenZeppelin library is used as it simplifies the development of common access control, it has been tested by many and is believed to be stable.
+
 ## Restrictions on Functionality
 
 1. Only owner can add roles (however, for the purpose of testing, another function is created so anyone can add role)
@@ -63,4 +66,41 @@ openzeppelin-solidity ^2.2.0
 
 1. Download/clone this repo
 
-``
+`git clone https://github.com/albertsundjaja/dapp_wine_supplychain.git`
+
+2. For testing in Rinkeby, put in your infura and mnemonic in truffle-config.js
+
+```
+const mnemonic = "YOUR MNEMONIC";
+const infuraUrl = "YOUR INFURA URL";
+```
+
+3. go to the app folder
+
+`cd dapp_wine_supplychain/app`
+
+4. run the dev server
+
+`npm run dev`
+
+5. use your browser to access the frontend
+
+`http://localhost:8080`
+
+#### Running blockchain locally
+
+2. Run Ganache. The setting is expecting ganache to be running on localhost port 7545
+
+3. go to the cloned folder and use truffle to deploy
+`truffle migrate --reset --network ganache`
+
+*note*: it has been found that sometimes we need to delete the build folder containing the abi for proper frontend functionality. `build/contracts`
+
+3. run the dev server
+
+`npm run dev`
+
+4. use your browser to access the frontend
+
+`http://localhost:8080`
+
