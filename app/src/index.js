@@ -16,7 +16,7 @@ const App = {
             const deployedNetwork = baseArtifact.networks[networkId];
             this.meta = new web3.eth.Contract(
                 baseArtifact.abi,
-                deployedNetwork.address,
+                deployedNetwork.address
             );
 
             // get accounts

@@ -72,14 +72,23 @@ OpenZeppelin library is used as it simplifies the development of common access c
 
 `npm install`
 
-3. (this is optional) For testing deploy in Rinkeby, put in your infura and mnemonic in truffle-config.js
+3. for running using the deployed contract on Rinkeby,
+
+change the address part in `app/src/index.js` as below
 
 ```
-const mnemonic = "YOUR MNEMONIC";
-const infuraUrl = "YOUR INFURA URL";
+// get contract instance
+const networkId = await web3.eth.net.getId();
+const deployedNetwork = baseArtifact.networks[networkId];
+this.meta = new web3.eth.Contract(
+    baseArtifact.abi,
+    //deployedNetwork.address
+    "0xD7629d97D1866bDD462877319Ee4ef0cAd7cC486"
+);
+
 ```
 
-then do `truffle migrate --reset --network rinkeby`
+for running using local blockchain, see **running blockchain locally** below
 
 4. go to the app folder
 
@@ -96,6 +105,15 @@ then do `truffle migrate --reset --network rinkeby`
 7. use your browser to access the frontend
 
 `http://localhost:8080`
+
+8. (optional) For testing your own deployment in Rinkeby, put in your infura and mnemonic in truffle-config.js
+
+```
+const mnemonic = "YOUR MNEMONIC";
+const infuraUrl = "YOUR INFURA URL";
+```
+
+then do `truffle migrate --reset --network rinkeby`
 
 #### Running blockchain locally
 
