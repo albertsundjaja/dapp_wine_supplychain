@@ -68,22 +68,32 @@ OpenZeppelin library is used as it simplifies the development of common access c
 
 `git clone https://github.com/albertsundjaja/dapp_wine_supplychain.git`
 
-2. For testing in Rinkeby, put in your infura and mnemonic in truffle-config.js
+2. init and install npm
+
+`npm install`
+
+3. (this is optional) For testing deploy in Rinkeby, put in your infura and mnemonic in truffle-config.js
 
 ```
 const mnemonic = "YOUR MNEMONIC";
 const infuraUrl = "YOUR INFURA URL";
 ```
 
-3. go to the app folder
+then do `truffle migrate --reset --network rinkeby`
+
+4. go to the app folder
 
 `cd dapp_wine_supplychain/app`
 
-4. run the dev server
+5. init and install npm
+
+`npm install`
+
+6. run the dev server
 
 `npm run dev`
 
-5. use your browser to access the frontend
+7. use your browser to access the frontend
 
 `http://localhost:8080`
 
