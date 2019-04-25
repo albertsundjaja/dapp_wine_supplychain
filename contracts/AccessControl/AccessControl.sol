@@ -1,8 +1,8 @@
 pragma solidity ^0.5.2;
 
-import "../../app/node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol";
-import "../../app/node_modules/openzeppelin-solidity/contracts/ownership/Secondary.sol";
-import "../../app/node_modules/openzeppelin-solidity/contracts/lifecycle/Pausable.sol";
+import "../../node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol";
+import "../../node_modules/openzeppelin-solidity/contracts/ownership/Secondary.sol";
+import "../../node_modules/openzeppelin-solidity/contracts/lifecycle/Pausable.sol";
 
 
 contract AccessControl is Pausable, Ownable, Secondary {
