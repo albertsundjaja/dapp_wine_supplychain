@@ -104,3 +104,11 @@ const infuraUrl = "YOUR INFURA URL";
 
 `http://localhost:8080`
 
+## Rinkeby Contract Detail
+
+contract address
+`0xD7629d97D1866bDD462877319Ee4ef0cAd7cC486`
+
+view it on etherscan 
+
+`https://rinkeby.etherscan.io/address/0xD7629d97D1866bDD462877319Ee4ef0cAd7cC486`
